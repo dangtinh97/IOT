@@ -27,6 +27,6 @@ npm i --dev @types/express @types/compression
 
 - --
 RUN PROJECT
-
-SERVER: npm start
-DEVELOPMENT: npm run dev
+- npm install
+- SERVER: npm start
+- DEVELOPMENT: npm run dev
