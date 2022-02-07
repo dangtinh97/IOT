@@ -15,7 +15,9 @@ class SocketController {
 
     private _onConnect(socket:Socket)
     {
-        console.log(socket)
+        socket.on("BTN_1_SWITCH",(data)=>{
+            this.io.emit("BTN_1_SWITCH",JSON.stringify(data))
+        })
     }
 
     private generateId(){
