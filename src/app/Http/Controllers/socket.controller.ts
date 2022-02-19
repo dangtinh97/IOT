@@ -5,10 +5,9 @@ class SocketController {
     public io:Server
     constructor(server:any) {
         this.io = new Server(server,{
-            transports:["polling", "websocket"],
-            allowEIO3: true,
             cors:{
-                origin:"*"
+                origin:"*",
+                credentials: true
             }
         })
         this.generateId()
