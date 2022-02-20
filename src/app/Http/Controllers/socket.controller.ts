@@ -16,6 +16,7 @@ class SocketController {
 
     private _onConnect(socket:Socket)
     {
+        socket.emit("ping",JSON.stringify({"name":"dangtinh"}))
         socket.on("BTN_1_SWITCH",(data)=>{
             this.io.emit("BTN_1_SWITCH",JSON.stringify(data))
         })
