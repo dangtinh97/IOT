@@ -18,10 +18,12 @@ class SocketController {
     {
         socket.emit("ping",JSON.stringify({"name":"dangtinh"}))
         socket.on("LED_ON",(data)=>{
+            this.io.emit("LED_ON",JSON.stringify(data))
             console.log(data)
         })
 
         socket.on("LED_OFF",(data)=>{
+            this.io.emit("LED_OFF",JSON.stringify(data))
             console.log(data)
         })
 
