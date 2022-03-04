@@ -10,7 +10,11 @@ const io = require("socket.io")(httpServer, {
 
 io.on("connection", (socket) => {
     // ...
-    console.log(socket)
+    console.log("connect----"+socket.id)
+    socket.emit('ping',JSON.stringify({
+        status:200
+    }))
+
 });
 const port = parseInt(process.env.PORT || 3003 )
 httpServer.listen(port);
