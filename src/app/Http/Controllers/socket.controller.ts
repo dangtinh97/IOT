@@ -33,9 +33,9 @@ class SocketController {
     }
 
     private generateId(){
-        this.io.engine.generateId = ()=>{
-            return uuidv4()
-        }
+        // this.io.engine.generateId = ()=>{
+        //     return uuidv4()
+        // }
     }
 }
 export default SocketController
