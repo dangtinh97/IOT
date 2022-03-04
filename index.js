@@ -14,6 +14,12 @@ io.on("connection", (socket) => {
     socket.emit('ping',JSON.stringify({
         status:200
     }))
+    setTimeout(function (){
+        socket.emit("ping_2")
+        socket.emit("ping_3",{
+            status:200
+        })
+    },2000)
 
 });
 const port = parseInt(process.env.PORT || 3003 )
