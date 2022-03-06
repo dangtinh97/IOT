@@ -1,8 +1,15 @@
+var token = process.env.TOKEN || 'token';
+var received_updates = [];
 function webhook(req,res)
 {
-    console.log(process.env)
-
-    console.log(req.body)
-    res.send("EVENT_RECEIVED")
+    if (req.query['hub.mode'] == 'subscribe' && req.query['hub.verify_token'] == token) {
+        res.send(req.query['hub.challenge']);
+    } else {
+        res.sendStatus(400);
+    }
 }
-module.exports = {webhook}
+function index(req  ,res){
+    console.log(req);
+    res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
+}
+module.exports = {webhook,index}
