@@ -16,7 +16,7 @@ function index(req  ,res){
 
 function facebook(req,res)
 {
-    console.log('Facebook request body:', req.body);
+    console.log('Facebook request body:', JSON.stringify(req.body));
 
     if (!req.isXHubValid()) {
         console.log('Warning - request header X-Hub-Signature not present or invalid');
