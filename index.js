@@ -31,6 +31,7 @@ function broadcast(socket, data) {
     }
 }
 ws.on('connection', function(socket, req) {
+    console.log(socket)
     clients.push(socket);
     socket.on('message', function(message) {
         console.log('received: %s', message);

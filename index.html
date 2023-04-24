@@ -7,9 +7,11 @@
     <title>Document</title>
 </head>
 <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web-socket-js/1.0.0/web_socket.min.js" integrity="sha512-jtr9/t8rtBf1Sv832XjG1kAtUECQCqFnTAJWccL8CSC82VGzkPPih8rjtOfiiRKgqLXpLA1H/uQ/nq2bkHGWTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.0/socket.io.js" integrity="sha512-FPJNGVqbetcAGvuJTpWqVuaOim5C5pyV+JaiAOxtBgsOWy0aiOLM9k5Nh7ikpSzUoz2Tb9Ue6zYWICDr9zZ5+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     const socket = io('http://localhost:8080/')
+    var ws = new WebSocket('ws://' + 'localhost:8080' + '/');
 </script>
 </body>
 </html>
