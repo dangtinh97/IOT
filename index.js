@@ -1,21 +1,39 @@
 require('dotenv').config()
-const express = require('express');
-const app = express();
-const expressWs = require('express-ws')(app);
-const port = process.env.PORT || 3003;
-
-app.get('/', function(req, res, next){
-    console.log('get route', req.testing);
-    res.end();
+var fs = require('fs');
+var url = require('url');
+var http = require('http');
+var WebSocket = require('ws');
+// function gửi yêu cầu(response) từ phía server hoặc nhận yêu cầu (request) của client gửi lên
+function requestHandler(request, response) {
+    response.end('HELLO');
+}
+// create http server
+var server = http.createServer(requestHandler);
+var ws = new WebSocket.Server({
+    server
 });
-app.ws('/', function(ws, req) {
-    ws.on('message', function(msg) {
-        console.log(msg);
+var clients = [];
+
+function broadcast(socket, data) {
+    console.log(clients.length);
+    for (var i = 0; i < clients.length; i++) {
+        if (clients[i] != socket) {
+            clients[i].send(data);
+        }
+    }
+}
+ws.on('connection', function(socket, req) {
+    clients.push(socket);
+    socket.on('message', function(message) {
+        console.log('received: %s', message);
+        broadcast(socket, message);
     });
-    console.log('socket', req.testing);
+    socket.on('close', function() {
+        var index = clients.indexOf(socket);
+        clients.splice(index, 1);
+        console.log('disconnected');
+    });
 });
-
-app.listen(port,function (){
-    console.log(`listen *: ${port}`)
-});
-
+const port = process.env.PORT || 3000
+server.listen(port);
+console.log('Server listening on port '+port);
