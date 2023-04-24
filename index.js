@@ -5,10 +5,18 @@ var http = require('http');
 var WebSocket = require('ws');
 // function gửi yêu cầu(response) từ phía server hoặc nhận yêu cầu (request) của client gửi lên
 function requestHandler(request, response) {
+    const headers = {
+        'Access-Control-Allow-Origin': '*', /* @dev First, read about security */
+        'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
+        'Access-Control-Max-Age': 2592000, // 30 days
+    };
+    response.writeHead(200,headers)
     response.end('HELLO');
 }
 // create http server
-var server = http.createServer(requestHandler);
+var server = http.createServer(requestHandler,{
+
+});
 var ws = new WebSocket.Server({
     server
 });
@@ -17,7 +25,7 @@ var clients = [];
 function broadcast(socket, data) {
     console.log(clients.length);
     for (var i = 0; i < clients.length; i++) {
-        if (clients[i] != socket) {
+        if (clients[i] !== socket) {
             clients[i].send(data);
         }
     }
