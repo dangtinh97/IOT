@@ -8,7 +8,7 @@ const io = new Server(server,{
     cors:{
         origin: '*'
     },
-    cookie:false
+    cookie:false,
 });
 const port = process.env.PORT || 3003;
 
