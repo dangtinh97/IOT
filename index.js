@@ -9,6 +9,11 @@ const io = new Server(server,{
         origin: '*'
     }
 });
+io.attach({
+    pingInterval: 10000,
+    pingTimeout: 5000,
+    cookie: false
+})
 const port = process.env.PORT || 3003;
 
 io.on('connection', (socket) => {
