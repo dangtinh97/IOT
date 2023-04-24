@@ -1,21 +1,21 @@
 require('dotenv').config()
 const express = require('express');
 const app = express();
-const http = require('http');
-const server = http.createServer(app);
-const { Server } = require("socket.io");
-const io = new Server(server,{
-    cors:{
-        origin: '*'
-    },
-    cookie:false,
-});
+const expressWs = require('express-ws')(app);
 const port = process.env.PORT || 3003;
 
-io.on('connection', (socket) => {
-    console.log('a user connected',socket.id);
+app.get('/', function(req, res, next){
+    console.log('get route', req.testing);
+    res.end();
+});
+app.ws('/', function(ws, req) {
+    ws.on('message', function(msg) {
+        console.log(msg);
+    });
+    console.log('socket', req.testing);
 });
 
-server.listen(port, () => {
-    console.log(`listening on *:${port}`);
+app.listen(port,function (){
+    console.log(`listen *: ${port}`)
 });
+
