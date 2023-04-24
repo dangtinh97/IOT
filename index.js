@@ -7,13 +7,9 @@ const { Server } = require("socket.io");
 const io = new Server(server,{
     cors:{
         origin: '*'
-    }
+    },
+    cookie:false
 });
-io.attach({
-    pingInterval: 10000,
-    pingTimeout: 5000,
-    cookie: false
-})
 const port = process.env.PORT || 3003;
 
 io.on('connection', (socket) => {
