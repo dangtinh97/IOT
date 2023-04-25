@@ -9,6 +9,10 @@ const io = require("socket.io")(httpServer, {
     }
 });
 
+io.attach(httpServer,{
+    cookie:false
+})
+
 io.on('connection',(socket)=>{
     console.log(socket.id)
     // socket.emit('PONG',{})
