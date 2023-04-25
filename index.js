@@ -2,15 +2,12 @@ require('dotenv').config()
 const app = require("express")();
 const httpServer = require("http").createServer(app);
 const port = process.env.PORT || 3003;
-const io = require("socket.io")(httpServer, {
-    allowEIO3: true, // false by default
-    cors:{
-        origins:'*'
-    }
-});
+const io = require("socket.io")(httpServer);
 
 io.attach(httpServer,{
-    cookie:false
+    cookie:false,
+    pingInterval:10000,
+    pingTimeout:5000
 })
 
 io.on('connection',(socket)=>{
