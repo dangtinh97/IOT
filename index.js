@@ -10,7 +10,7 @@ const io = require("socket.io")(httpServer, {
 });
 
 io.attach(httpServer,{
-    cookie:true
+    cookie:false
 })
 
 io.on('connection',(socket)=>{
