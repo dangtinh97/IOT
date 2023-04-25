@@ -4,8 +4,7 @@ const httpServer = require("http").createServer(app);
 const port = process.env.PORT || 3003;
 const io = require("socket.io")(httpServer, {
     cors:{
-        origins:'*',
-        credentials: true
+        origins:'*'
     }
 });
 
