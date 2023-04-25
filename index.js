@@ -11,7 +11,7 @@ const io = require("socket.io")(httpServer, {
 
 io.on('connection',(socket)=>{
     console.log(socket.id)
-    socket.emit('PONG',{})
+    // socket.emit('PONG',{})
 })
 httpServer.listen(port,function (){
     console.log('server start with*:'+port)
