@@ -12,7 +12,7 @@ const io = require("socket.io")(httpServer,{
 
 io.attach(httpServer,{
     allowEIO3:true,
-    cookie:false,
+    cookie:true,
     pingInterval:10000,
     pingTimeout:5000,
     transports:['websocket']
