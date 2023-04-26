@@ -5,7 +5,9 @@ const port = process.env.PORT || 3003;
 const io = require("socket.io")(httpServer,{
     cors:{
         origin:'*'
-    }
+    },
+    allowEIO3: true,
+    transports:['websocket']
 });
 
 io.attach(httpServer,{
