@@ -23,6 +23,10 @@ io.on('connection',(socket)=>{
     // socket.emit('PONG',{})
 })
 
+io.on('error',(err)=>{
+    console.log(err.stack)
+})
+
 httpServer.listen(port,function (){
     console.log('server start with*:'+port)
 })
