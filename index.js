@@ -7,7 +7,6 @@ const io = require("socket.io")(httpServer,{
 });
 
 io.attach(httpServer,{
-    cookie:false,
     pingInterval:10000,
     pingTimeout:5000
 })
