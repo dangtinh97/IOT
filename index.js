@@ -18,3 +18,7 @@ io.on('connection',(socket)=>{
 httpServer.listen(port,function (){
     console.log('server start with*:'+port)
 })
+
+process.on('uncaughtException', function (err) {
+    console.log('Caught exception: ' + err);
+});
