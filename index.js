@@ -8,7 +8,8 @@ io.attach(httpServer,{
     allowEIO3:true,
     cookie:false,
     pingInterval:10000,
-    pingTimeout:5000
+    pingTimeout:5000,
+    transports:['websocket']
 })
 
 io.on('connection',(socket)=>{
