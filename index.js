@@ -8,7 +8,7 @@ const url = require('url');
 const TYPE_ESP8266 = "esp8266";
 const TYPE_CONTROL = "control";
 
-var ws = new WebSocket.Server({
+let ws = new WebSocket.Server({
     server
 });
 let clients = [];
@@ -55,8 +55,8 @@ ws.on('connection', function(socket, req) {
         }
     });
     socket.on('close', function(err) {
-        var index = clients.indexOf(socket);
-        clients.splice(index, 1);
+        // var index = clients.indexOf(socket);
+        // clients.splice(index, 1);
         console.log('disconnected',err);
     });
     ws.on('error', (e)=>{
